@@ -1,0 +1,7 @@
+CREATE TABLE [dbo].[Status]
+(
+    [Id] INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    [StatusType] NVARCHAR(50) NOT NULL,
+    [ScreenName] NVARCHAR(50) NOT NULL
+);
+GO
