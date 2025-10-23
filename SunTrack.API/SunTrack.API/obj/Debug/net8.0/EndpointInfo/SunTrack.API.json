@@ -1,0 +1,34 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "SunTrack.API",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/ProjectSection/GetProjectslist": {
+      "get": {
+        "tags": [
+          "ProjectSection"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ProjectSection/GetAllProjectsVM": {
+      "get": {
+        "tags": [
+          "ProjectSection"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": { }
+}

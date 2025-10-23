@@ -1,0 +1,14 @@
+D:\viashramo\API's\Suntrack\SunTrack.API\SunTrack.API.Data\bin\Debug\net8.0\SunTrack.API.Data.deps.json
+D:\viashramo\API's\Suntrack\SunTrack.API\SunTrack.API.Data\bin\Debug\net8.0\SunTrack.API.Data.runtimeconfig.json
+D:\viashramo\API's\Suntrack\SunTrack.API\SunTrack.API.Data\bin\Debug\net8.0\SunTrack.API.Data.dll
+D:\viashramo\API's\Suntrack\SunTrack.API\SunTrack.API.Data\bin\Debug\net8.0\SunTrack.API.Data.pdb
+D:\viashramo\API's\Suntrack\SunTrack.API\SunTrack.API.Data\obj\Debug\net8.0\SunTrack.API.Data.csproj.AssemblyReference.cache
+D:\viashramo\API's\Suntrack\SunTrack.API\SunTrack.API.Data\obj\Debug\net8.0\SunTrack.API.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\viashramo\API's\Suntrack\SunTrack.API\SunTrack.API.Data\obj\Debug\net8.0\SunTrack.API.Data.AssemblyInfoInputs.cache
+D:\viashramo\API's\Suntrack\SunTrack.API\SunTrack.API.Data\obj\Debug\net8.0\SunTrack.API.Data.AssemblyInfo.cs
+D:\viashramo\API's\Suntrack\SunTrack.API\SunTrack.API.Data\obj\Debug\net8.0\SunTrack.API.Data.csproj.CoreCompileInputs.cache
+D:\viashramo\API's\Suntrack\SunTrack.API\SunTrack.API.Data\obj\Debug\net8.0\SunTrack.API.Data.dll
+D:\viashramo\API's\Suntrack\SunTrack.API\SunTrack.API.Data\obj\Debug\net8.0\refint\SunTrack.API.Data.dll
+D:\viashramo\API's\Suntrack\SunTrack.API\SunTrack.API.Data\obj\Debug\net8.0\SunTrack.API.Data.pdb
+D:\viashramo\API's\Suntrack\SunTrack.API\SunTrack.API.Data\obj\Debug\net8.0\SunTrack.API.Data.genruntimeconfig.cache
+D:\viashramo\API's\Suntrack\SunTrack.API\SunTrack.API.Data\obj\Debug\net8.0\ref\SunTrack.API.Data.dll

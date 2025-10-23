@@ -1,0 +1,22 @@
+[
+  {
+    "ContainingType": "SunTrack.API.Controllers.ProjectSectionController",
+    "Method": "GetAllProjectsVM",
+    "RelativePath": "api/ProjectSection/GetAllProjectsVM",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SunTrack.API.Controllers.ProjectSectionController",
+    "Method": "GetProjectslist",
+    "RelativePath": "api/ProjectSection/GetProjectslist",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
