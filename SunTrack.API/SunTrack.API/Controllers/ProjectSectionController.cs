@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SunTrack.API.Data.Models;
 using SunTrack.API.Services.Projects;
+using SunTrack.API.ViewModels;
 using SunTrackApi.Services;
 
 namespace SunTrack.API.Controllers
@@ -48,36 +49,12 @@ namespace SunTrack.API.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("GetFilteredProjects")]
-        public async Task<IActionResult> GetFilteredProjects(
-                int? customerId = null,
-                int? statusId = null,
-                string? category = null,
-                string? projectName = null)
+        [HttpPost("GetProjects")]
+        public async Task<IActionResult> GetProjects(SearchVM search)
         {
             try
             {
-                var projects = await _projectServices.GetFilteredProjects(
-                    customerId, statusId, category, projectName);
-
-                return Ok(projects); // 200 JSON list
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message); // 400 on error (simple for now)
-            }
-        }
-
-        [HttpGet]
-        [Route("GetPaginationAsync")]
-        public async Task<IActionResult> GetAllProjectsVM(
-             int pageNumber = 1,
-             int pageSize = 10)
-        {
-            try
-            {
-                var projects = await _projectServices.GetPaginationAsync(pageNumber, pageSize);
+                var projects = await _projectServices.GetProjectsAsync(search);
                 return Ok(projects);
             }
             catch (Exception ex)
@@ -85,6 +62,6 @@ namespace SunTrack.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
     }
 }
+

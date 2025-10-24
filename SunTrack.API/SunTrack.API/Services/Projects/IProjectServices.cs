@@ -9,14 +9,7 @@ namespace SunTrack.API.Services.Projects
     {
         Task<List<Project>> GetProjectslist();
         Task<List<ProjectViewModel>> GetAllProjectsAsync();
-        Task<List<ProjectViewModel>> GetFilteredProjects(
-            int? customerId,
-            int? statusId,
-            string? category,
-            string? projectName);
 
-        Task<List<ProjectViewModel>> GetPaginationAsync(
-                int pageNumber,
-                int pageSize);
+        Task<List<ProjectViewModel>> GetProjectsAsync(SearchVM search);
     }
 }

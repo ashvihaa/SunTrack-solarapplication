@@ -41,30 +41,33 @@ namespace SunTrackApi.Services
             return projectList;
         }
 
-        public async Task<List<ProjectViewModel>> GetFilteredProjects(
-            int? customerId,
-            int? statusId,
-            string? category,
-            string? projectName)
+
+        public async Task<List<ProjectViewModel>> GetProjectsAsync(SearchVM search)
         {
-            // Start from Projects table
-            var query = _context.Projects.AsQueryable();
+            // Start the query
+            var query = _context.Projects
+                .AsNoTracking()
+                .AsQueryable();
 
-            // Apply filters only if values are provided
-            if (customerId.HasValue)
-                query = query.Where(p => p.CustomerId == customerId.Value);
+            // Apply search filter if text is provided
+            if (!string.IsNullOrWhiteSpace(search.SearchText))
+            {
+                var s = search.SearchText.Trim().ToLower();
+                query = query.Where(p =>
+                    (p.ProjectName != null && p.ProjectName.ToLower().Contains(s)) ||
+                    (p.Category != null && p.Category.ToLower().Contains(s)) ||
+                    p.ServiceNo.ToString().ToLower().Contains(s)
+                );
+            }
 
-            if (statusId.HasValue)
-                query = query.Where(p => p.StatusId == statusId.Value);
+            // Pagination logic
+            int skip = (search.PageNumber - 1) * search.PageSize;
 
-            if (!string.IsNullOrWhiteSpace(category))
-                query = query.Where(p => p.Category.Contains(category));
-
-            if (!string.IsNullOrWhiteSpace(projectName))
-                query = query.Where(p => p.ProjectName.Contains(projectName));
-
-            // Shape the data into your ViewModel and execute the query
+            // Execute LINQ query
             var result = await query
+                .OrderBy(p => p.Id)
+                .Skip(skip)
+                .Take(search.PageSize)
                 .Select(p => new ProjectViewModel
                 {
                     Id = p.Id,
@@ -74,28 +77,6 @@ namespace SunTrackApi.Services
                 })
                 .ToListAsync();
             return result;
-        }
-
-        public async Task<List<ProjectViewModel>> GetPaginationAsync(int pageNumber, int pageSize)
-        {
-            // Calculate how many records to skip
-            int skip = (pageNumber - 1) * pageSize;
-
-            // Fetch only the required page from database
-            var projects = await _context.Projects
-                .OrderBy(p => p.Id)            // Important to maintain consistent order
-                .Skip(skip)                    // Skip previous records
-                .Take(pageSize)                // Take only required records
-                .Select(p => new ProjectViewModel
-                {
-                    Id = p.Id,
-                    ProjectName = p.ProjectName,
-                    Category = p.Category,
-                    ServiceNo = p.ServiceNo,
-                })
-                .ToListAsync();
-
-            return projects;
         }
     }
 }

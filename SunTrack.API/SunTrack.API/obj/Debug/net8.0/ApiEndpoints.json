@@ -11,52 +11,16 @@
   },
   {
     "ContainingType": "SunTrack.API.Controllers.ProjectSectionController",
-    "Method": "GetFilteredProjects",
-    "RelativePath": "api/ProjectSection/GetFilteredProjects",
-    "HttpMethod": "GET",
+    "Method": "GetProjects",
+    "RelativePath": "api/ProjectSection/GetProjects",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "customerId",
-        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "statusId",
-        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "category",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "projectName",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SunTrack.API.Controllers.ProjectSectionController",
-    "Method": "GetAllProjectsVM",
-    "RelativePath": "api/ProjectSection/GetPaginationAsync",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "pageNumber",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "pageSize",
-        "Type": "System.Int32",
-        "IsRequired": false
+        "Name": "search",
+        "Type": "SunTrack.API.ViewModels.SearchVM",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
