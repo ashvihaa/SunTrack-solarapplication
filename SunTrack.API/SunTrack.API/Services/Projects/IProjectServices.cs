@@ -8,12 +8,11 @@ namespace SunTrack.API.Services.Projects
     public interface IProjectServices
     {
         Task<List<Project>> GetProjectslist();
+        Task<List<ProjectViewModel>> GetAllProjectsAsync();
+        Task<List<ProjectViewModel>> GetFilteredProjects(
+            int? customerId,
+            int? statusId,
+            string? category,
+            string? projectName);
     }
-}
-
-
-public interface IProjectService
-{
-    // This method will return a list of all projects as ProjectViewModel
-    Task<List<ProjectViewModel>> GetAllProjectsAsync();
 }

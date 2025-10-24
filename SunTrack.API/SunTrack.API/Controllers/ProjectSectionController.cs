@@ -39,12 +39,33 @@ namespace SunTrack.API.Controllers
         {
             try
             {
-                var projects = await _projectServices.GetProjectslist();
+                var projects = await _projectServices.GetAllProjectsAsync();
                 return Ok(projects);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("GetFilteredProjects")]
+        public async Task<IActionResult> GetFilteredProjects(
+                int? customerId = null,
+                int? statusId = null,
+                string? category = null,
+                string? projectName = null)
+        {
+            try
+            {
+                var projects = await _projectServices.GetFilteredProjects(
+                    customerId, statusId, category, projectName);
+
+                return Ok(projects); // 200 + JSON list
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message); // 400 on error (simple for now)
             }
         }
     }

@@ -152,3 +152,4 @@ D:\viashramo\API's\Suntrack\SunTrack.API\SunTrack.API\obj\Debug\net8.0\refint\Su
 D:\viashramo\API's\Suntrack\SunTrack.API\SunTrack.API\obj\Debug\net8.0\SunTrack.API.pdb
 D:\viashramo\API's\Suntrack\SunTrack.API\SunTrack.API\obj\Debug\net8.0\SunTrack.API.genruntimeconfig.cache
 D:\viashramo\API's\Suntrack\SunTrack.API\SunTrack.API\obj\Debug\net8.0\ref\SunTrack.API.dll
+D:\viashramo\API's\Suntrack\SunTrack.API\SunTrack.API\obj\Debug\net8.0\SunTrack.API.sourcelink.json

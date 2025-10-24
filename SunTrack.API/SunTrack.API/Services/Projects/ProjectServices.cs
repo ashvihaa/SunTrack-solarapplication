@@ -20,10 +20,6 @@ namespace SunTrackApi.Services
             return await _context.Projects.ToListAsync();
         }
 
-        //public async Task<object?> GetByIdAsync(int id)
-        //{
-        //    return await _context.Projects.FirstOrDefaultAsync(p => p.Id == id);
-        //}
         public async Task<List<ProjectViewModel>> GetAllProjectsAsync()
         {
             // Get all projects from database and include related data
@@ -46,6 +42,44 @@ namespace SunTrackApi.Services
 
             // Return the ViewModel list
             return projectList;
+        }
+
+        public async Task<List<ProjectViewModel>> GetFilteredProjects(
+            int? customerId,
+            int? statusId,
+            string? category,
+            string? projectName)
+        {
+            // Start from Projects table
+            var query = _context.Projects.AsQueryable();
+
+            // Apply filters only if values are provided
+            if (customerId.HasValue)
+                query = query.Where(p => p.CustomerId == customerId.Value);
+
+            if (statusId.HasValue)
+                query = query.Where(p => p.StatusId == statusId.Value);
+
+            if (!string.IsNullOrWhiteSpace(category))
+                query = query.Where(p => p.Category.Contains(category));
+
+            if (!string.IsNullOrWhiteSpace(projectName))
+                query = query.Where(p => p.ProjectName.Contains(projectName));
+
+            // Shape the data into your ViewModel and execute the query
+            var result = await query
+                .Select(p => new ProjectViewModel
+                {
+                    Id = p.Id,
+                    ProjectName = p.ProjectName,
+                    Category = p.Category,
+                    ServiceNo = p.ServiceNo,
+                    SiteLocationName = p.SiteLocationNavigation.Address1,
+                    StatusName = p.Status.ScreenName,
+                    CustomerName = p.Customer.CustomerName
+                })
+                .ToListAsync();
+            return result;
         }
     }
 }
