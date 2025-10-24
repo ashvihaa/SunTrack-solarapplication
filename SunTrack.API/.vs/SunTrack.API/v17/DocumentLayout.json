@@ -70,8 +70,7 @@
               "RelativeToolTip": "SunTrack.API\\MyConfigServiceCollectionExtensions.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-23T12:44:38.223Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-23T12:44:38.223Z"
             },
             {
               "$type": "Document",
@@ -95,8 +94,7 @@
               "RelativeToolTip": "SunTrack.API\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-23T11:39:11.169Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-23T11:39:11.169Z"
             },
             {
               "$type": "Document",
@@ -106,7 +104,7 @@
               "RelativeDocumentMoniker": "SunTrack.API\\Controllers\\ProjectSectionController.cs",
               "ToolTip": "D:\\viashramo\\API\u0027s\\Suntrack\\SunTrack.API\\SunTrack.API\\Controllers\\ProjectSectionController.cs",
               "RelativeToolTip": "SunTrack.API\\Controllers\\ProjectSectionController.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAUwC4AAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAkwEgAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-23T11:35:41.925Z",
               "EditorCaption": ""
@@ -119,7 +117,7 @@
               "RelativeDocumentMoniker": "SunTrack.API\\Services\\Projects\\IProjectServices.cs",
               "ToolTip": "D:\\viashramo\\API\u0027s\\Suntrack\\SunTrack.API\\SunTrack.API\\Services\\Projects\\IProjectServices.cs",
               "RelativeToolTip": "SunTrack.API\\Services\\Projects\\IProjectServices.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAUwBEAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-23T11:27:48.422Z",
               "EditorCaption": ""
@@ -132,7 +130,7 @@
               "RelativeDocumentMoniker": "SunTrack.API\\Services\\Projects\\ProjectServices.cs",
               "ToolTip": "D:\\viashramo\\API\u0027s\\Suntrack\\SunTrack.API\\SunTrack.API\\Services\\Projects\\ProjectServices.cs",
               "RelativeToolTip": "SunTrack.API\\Services\\Projects\\ProjectServices.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAgwA4AAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAAE0AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-23T11:27:21.059Z",
               "EditorCaption": ""

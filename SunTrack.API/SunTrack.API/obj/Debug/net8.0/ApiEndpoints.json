@@ -42,6 +42,27 @@
   },
   {
     "ContainingType": "SunTrack.API.Controllers.ProjectSectionController",
+    "Method": "GetAllProjectsVM",
+    "RelativePath": "api/ProjectSection/GetPaginationAsync",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SunTrack.API.Controllers.ProjectSectionController",
     "Method": "GetProjectslist",
     "RelativePath": "api/ProjectSection/GetProjectslist",
     "HttpMethod": "GET",

@@ -61,12 +61,30 @@ namespace SunTrack.API.Controllers
                 var projects = await _projectServices.GetFilteredProjects(
                     customerId, statusId, category, projectName);
 
-                return Ok(projects); // 200 + JSON list
+                return Ok(projects); // 200 JSON list
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message); // 400 on error (simple for now)
             }
         }
+
+        [HttpGet]
+        [Route("GetPaginationAsync")]
+        public async Task<IActionResult> GetAllProjectsVM(
+             int pageNumber = 1,
+             int pageSize = 10)
+        {
+            try
+            {
+                var projects = await _projectServices.GetPaginationAsync(pageNumber, pageSize);
+                return Ok(projects);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }

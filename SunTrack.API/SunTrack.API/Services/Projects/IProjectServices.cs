@@ -14,5 +14,9 @@ namespace SunTrack.API.Services.Projects
             int? statusId,
             string? category,
             string? projectName);
+
+        Task<List<ProjectViewModel>> GetPaginationAsync(
+                int pageNumber,
+                int pageSize);
     }
 }

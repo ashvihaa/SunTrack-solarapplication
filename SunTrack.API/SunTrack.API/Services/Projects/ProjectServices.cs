@@ -81,5 +81,30 @@ namespace SunTrackApi.Services
                 .ToListAsync();
             return result;
         }
+
+        public async Task<List<ProjectViewModel>> GetPaginationAsync(int pageNumber, int pageSize)
+        {
+            // Calculate how many records to skip
+            int skip = (pageNumber - 1) * pageSize;
+
+            // Fetch only the required page from database
+            var projects = await _context.Projects
+                .OrderBy(p => p.Id)            // Important to maintain consistent order
+                .Skip(skip)                    // Skip previous records
+                .Take(pageSize)                // Take only required records
+                .Select(p => new ProjectViewModel
+                {
+                    Id = p.Id,
+                    ProjectName = p.ProjectName,
+                    Category = p.Category,
+                    ServiceNo = p.ServiceNo,
+                    SiteLocationName = p.SiteLocationNavigation.Address1,
+                    StatusName = p.Status.ScreenName,
+                    CustomerName = p.Customer.CustomerName
+                })
+                .ToListAsync();
+
+            return projects;
+        }
     }
 }
