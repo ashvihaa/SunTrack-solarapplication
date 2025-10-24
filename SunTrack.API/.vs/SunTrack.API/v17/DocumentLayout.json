@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\viashramo\\API\u0027s\\Suntrack\\SunTrack.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{624DD2C0-C9DC-4F10-BD5B-9623E4DA4F9B}|SunTrack.API\\SunTrack.API.csproj|d:\\viashramo\\api\u0027s\\suntrack\\suntrack.api\\suntrack.api\\services\\projects\\iprojectservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{624DD2C0-C9DC-4F10-BD5B-9623E4DA4F9B}|SunTrack.API\\SunTrack.API.csproj|solutionrelative:suntrack.api\\services\\projects\\iprojectservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{624DD2C0-C9DC-4F10-BD5B-9623E4DA4F9B}|SunTrack.API\\SunTrack.API.csproj|d:\\viashramo\\api\u0027s\\suntrack\\suntrack.api\\suntrack.api\\services\\projects\\projectservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{624DD2C0-C9DC-4F10-BD5B-9623E4DA4F9B}|SunTrack.API\\SunTrack.API.csproj|solutionrelative:suntrack.api\\services\\projects\\projectservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{624DD2C0-C9DC-4F10-BD5B-9623E4DA4F9B}|SunTrack.API\\SunTrack.API.csproj|d:\\viashramo\\api\u0027s\\suntrack\\suntrack.api\\suntrack.api\\services\\projects\\iprojectservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{624DD2C0-C9DC-4F10-BD5B-9623E4DA4F9B}|SunTrack.API\\SunTrack.API.csproj|solutionrelative:suntrack.api\\services\\projects\\iprojectservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{624DD2C0-C9DC-4F10-BD5B-9623E4DA4F9B}|SunTrack.API\\SunTrack.API.csproj|d:\\viashramo\\api\u0027s\\suntrack\\suntrack.api\\suntrack.api\\viewmodels\\projectsvm\\projectviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
@@ -42,8 +42,7 @@
               "RelativeToolTip": "SunTrack.API\\ViewModels\\SearchVM.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-24T10:51:43.455Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-24T10:51:43.455Z"
             },
             {
               "$type": "Document",
@@ -55,8 +54,7 @@
               "RelativeToolTip": "SunTrack.API\\ViewModels\\ProjectsVM\\ProjectViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-23T13:24:14.032Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-23T13:24:14.032Z"
             },
             {
               "$type": "Document",
@@ -68,12 +66,11 @@
               "RelativeToolTip": "SunTrack.API\\Controllers\\ProjectSectionController.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAUwDQAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-23T11:35:41.925Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-23T11:35:41.925Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "IProjectServices.cs",
               "DocumentMoniker": "D:\\viashramo\\API\u0027s\\Suntrack\\SunTrack.API\\SunTrack.API\\Services\\Projects\\IProjectServices.cs",
               "RelativeDocumentMoniker": "SunTrack.API\\Services\\Projects\\IProjectServices.cs",
@@ -86,13 +83,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "ProjectServices.cs",
               "DocumentMoniker": "D:\\viashramo\\API\u0027s\\Suntrack\\SunTrack.API\\SunTrack.API\\Services\\Projects\\ProjectServices.cs",
               "RelativeDocumentMoniker": "SunTrack.API\\Services\\Projects\\ProjectServices.cs",
               "ToolTip": "D:\\viashramo\\API\u0027s\\Suntrack\\SunTrack.API\\SunTrack.API\\Services\\Projects\\ProjectServices.cs",
               "RelativeToolTip": "SunTrack.API\\Services\\Projects\\ProjectServices.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAmwDoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAqwD8AAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-23T11:27:21.059Z",
               "EditorCaption": ""
