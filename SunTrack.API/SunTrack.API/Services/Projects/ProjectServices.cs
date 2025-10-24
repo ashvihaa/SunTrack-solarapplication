@@ -35,9 +35,6 @@ namespace SunTrackApi.Services
                 ProjectName = p.ProjectName,
                 Category = p.Category,
                 ServiceNo = p.ServiceNo,
-                SiteLocationName = p.SiteLocationNavigation.Address1,
-                StatusName = p.Status.ScreenName,
-                CustomerName = p.Customer.CustomerName
             }).ToList();
 
             // Return the ViewModel list
@@ -74,9 +71,6 @@ namespace SunTrackApi.Services
                     ProjectName = p.ProjectName,
                     Category = p.Category,
                     ServiceNo = p.ServiceNo,
-                    SiteLocationName = p.SiteLocationNavigation.Address1,
-                    StatusName = p.Status.ScreenName,
-                    CustomerName = p.Customer.CustomerName
                 })
                 .ToListAsync();
             return result;
@@ -98,9 +92,6 @@ namespace SunTrackApi.Services
                     ProjectName = p.ProjectName,
                     Category = p.Category,
                     ServiceNo = p.ServiceNo,
-                    SiteLocationName = p.SiteLocationNavigation.Address1,
-                    StatusName = p.Status.ScreenName,
-                    CustomerName = p.Customer.CustomerName
                 })
                 .ToListAsync();
 
