@@ -11,12 +11,5 @@
         public string Category { get; set; }
         public int SiteLocation { get; set; }
         public bool SubsidyApplicable { get; set; }
-        public List<ProductsList> productsList { get; set; }
-    }
-
-    public class ProductsList
-    {
-        public int ProductId { get; set; }
-
     }
 }
