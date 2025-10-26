@@ -134,16 +134,83 @@
           }
         }
       }
+    },
+    "/api/ProjectSection/SaveMapping": {
+      "post": {
+        "tags": [
+          "ProjectSection"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectProductMappingRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectProductMappingRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectProductMappingRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectProductMappingRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ProjectSection/GetMappings/{projectId}": {
+      "get": {
+        "tags": [
+          "ProjectSection"
+        ],
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
-      "ProductsList": {
+      "ProjectProductMappingRequestDto": {
         "type": "object",
         "properties": {
-          "productId": {
+          "projectId": {
             "type": "integer",
             "format": "int32"
+          },
+          "productIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -186,13 +253,6 @@
           },
           "subsidyApplicable": {
             "type": "boolean"
-          },
-          "productsList": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ProductsList"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false

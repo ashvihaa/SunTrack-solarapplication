@@ -21,6 +21,22 @@
   },
   {
     "ContainingType": "SunTrack.API.Controllers.ProjectSectionController",
+    "Method": "GetMappings",
+    "RelativePath": "api/ProjectSection/GetMappings/{projectId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SunTrack.API.Controllers.ProjectSectionController",
     "Method": "GetProjectById",
     "RelativePath": "api/ProjectSection/GetProjectById",
     "HttpMethod": "GET",
@@ -59,6 +75,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SunTrack.API.Controllers.ProjectSectionController",
+    "Method": "SaveMapping",
+    "RelativePath": "api/ProjectSection/SaveMapping",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "SunTrack.API.ViewModels.ProjectProductMappingRequestDto",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

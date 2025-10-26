@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using SunTrack.API;
 using SunTrack.API.Data;
 using SunTrack.API.Data.Models;
+using SunTrack.API.Services; // Include the namespace for the service interfaces and classes
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,12 +10,13 @@ builder.Services.AddHttpClient();
 builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddMyDependencyGroup();
 builder.Services.AddDbContext<SunTrackContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SunTrackConnection"))
-);
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SunTrackConnection")));
 
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IProjectProductMappingService, ProjectProductMappingService>();
+
 
 var app = builder.Build();
 
@@ -43,5 +45,18 @@ namespace SunTrack.API.Data
             : base(options)
         {
         }
+    }
+}
+
+namespace SunTrack.API.Services
+{
+    public interface IProjectProductMappingService
+    {
+        // Define interface members here
+    }
+
+    public class ProjectProductMappingService : IProjectProductMappingService
+    {
+        // Implement interface members here
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SunTrack.API.Data.Models;
+using SunTrack.API.Services;
 using SunTrack.API.Services.Projects;
 using SunTrack.API.ViewModels;
 using SunTrackApi.Services;
@@ -86,6 +87,20 @@ namespace SunTrack.API.Controllers
         {
             var projects = await _projectServices.GetAllProjectsAsync();
             return Ok(projects);
+        }
+
+        [HttpPost("SaveMapping")]
+        public async Task<IActionResult> SaveMapping(ProjectProductMappingRequestDto model)
+        {
+            var result = await _projectServices.AddOrUpdateMappingAsync(model);
+            return Ok(new { message = result });
+        }
+
+        [HttpGet("GetMappings/{projectId}")]
+        public async Task<IActionResult> GetMappings(int projectId)
+        {
+            var productIds = await _projectServices.GetProductIdsByProjectAsync(projectId);
+            return Ok(productIds);
         }
     }
 }

@@ -168,5 +168,39 @@ namespace SunTrackApi.Services
             }
             return list;
         }
+
+        public async Task<string> AddOrUpdateMappingAsync(ProjectProductMappingRequestDto model)
+        {
+            if (model == null || model.ProjectId <= 0)
+                return "Invalid data";
+
+            var existing = _context.ProjectProductMappings
+                .Where(x => x.ProjectId == model.ProjectId);
+            _context.ProjectProductMappings.RemoveRange(existing);
+            await _context.SaveChangesAsync();
+
+            if (model.ProductIds != null && model.ProductIds.Any())
+            {
+                foreach (var productId in model.ProductIds)
+                {
+                    _context.ProjectProductMappings.Add(new ProjectProductMapping
+                    {
+                        ProjectId = model.ProjectId,
+                        ProductId = productId
+                    });
+                }
+                await _context.SaveChangesAsync();
+            }
+
+            return "Mapping saved successfully";
+        }
+
+        public async Task<List<int>> GetProductIdsByProjectAsync(int projectId)
+        {
+            return await _context.ProjectProductMappings
+                .Where(x => x.ProjectId == projectId)
+                .Select(x => x.ProductId)
+                .ToListAsync();
+        }
     }
 }
