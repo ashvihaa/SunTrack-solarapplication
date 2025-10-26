@@ -22,7 +22,7 @@
   {
     "ContainingType": "SunTrack.API.Controllers.ProjectSectionController",
     "Method": "GetProjectById",
-    "RelativePath": "api/ProjectSection/GetProjectById/{id}",
+    "RelativePath": "api/ProjectSection/GetProjectById",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -30,7 +30,7 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -39,7 +39,7 @@
     "ContainingType": "SunTrack.API.Controllers.ProjectSectionController",
     "Method": "GetProjects",
     "RelativePath": "api/ProjectSection/GetProjects",
-    "HttpMethod": "POST",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [

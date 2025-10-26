@@ -49,7 +49,7 @@ namespace SunTrack.API.Controllers
             }
         }
 
-        [HttpPost("GetProjects")]
+        [HttpGet("GetProjects")]
         public async Task<IActionResult> GetProjects(SearchVM search)
         {
             try
@@ -71,7 +71,7 @@ namespace SunTrack.API.Controllers
             return Ok(new { message = result });
         }
 
-        [HttpGet("GetProjectById/{id}")]
+        [HttpGet("GetProjectById")]
         public async Task<IActionResult> GetProjectById(int id)
         {
             var project = await _projectServices.GetProjectByIdAsync(id);
