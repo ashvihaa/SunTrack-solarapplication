@@ -40,7 +40,7 @@ namespace SunTrack.API.Controllers
         {
             try
             {
-                var projects = await _projectServices.GetAllProjectsAsync();
+                var projects = await _projectServices.GetAllProjectsAsync(); // returns List<ProjectViewModel>
                 return Ok(projects);
             }
             catch (Exception ex)
@@ -61,6 +61,31 @@ namespace SunTrack.API.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+
+        [HttpPost("SaveProject")]
+        public async Task<IActionResult> SaveProject(ProjectRequestDto model)
+        {
+            var result = await _projectServices.SaveProjectAsync(model);
+            return Ok(new { message = result });
+        }
+
+        [HttpGet("GetProjectById/{id}")]
+        public async Task<IActionResult> GetProjectById(int id)
+        {
+            var project = await _projectServices.GetProjectByIdAsync(id);
+            if (project == null)
+                return NotFound(new { message = "Project not found" });
+
+            return Ok(project);
+        }
+
+        [HttpGet("GetAllProjects")]
+        public async Task<IActionResult> GetAllProjects()
+        {
+            var projects = await _projectServices.GetAllProjectsAsync();
+            return Ok(projects);
         }
     }
 }

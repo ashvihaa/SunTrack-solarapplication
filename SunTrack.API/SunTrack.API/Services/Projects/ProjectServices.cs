@@ -41,7 +41,6 @@ namespace SunTrackApi.Services
             return projectList;
         }
 
-
         public async Task<List<ProjectViewModel>> GetProjectsAsync(SearchVM search)
         {
             // Start the query
@@ -56,8 +55,7 @@ namespace SunTrackApi.Services
                 query = query.Where(p =>
                     (p.ProjectName != null && p.ProjectName.ToLower().Contains(s)) ||
                     (p.Category != null && p.Category.ToLower().Contains(s)) ||
-                    p.ServiceNo.ToString().ToLower().Contains(s)
-                );
+                    p.ServiceNo.ToString().ToLower().Contains(s));
             }
 
             // Pagination logic
@@ -77,6 +75,98 @@ namespace SunTrackApi.Services
                 })
                 .ToListAsync();
             return result;
+        }
+
+        public async Task<string> SaveProjectAsync(ProjectRequestDto model)
+        {
+            if (model == null)
+                return "Invalid data";
+
+            // ADD 
+            if (model.ProjectId == 0)
+            {
+                var project = new Project
+                {
+                    CustomerId = model.Customer_Id,
+                    LeadId = model.Lead_Id ?? 0,
+                    StatusId = model.StatusId,
+                    ProjectName = model.Project_Name,
+                    ServiceNo = int.TryParse(model.Service_No, out var serviceNo) ? serviceNo : 0,
+                    Category = model.Category,
+                    SiteLocation = model.SiteLocation,
+                    CreatedDate = DateTime.Now,
+                    CreatedBy = 1,
+                    IsActive = true
+                };
+
+                _context.Projects.Add(project);
+                await _context.SaveChangesAsync();
+                return "Project added successfully";
+            }
+            else
+            {
+                // EDIT
+                var existingProject = await _context.Projects
+                    .FirstOrDefaultAsync(x => x.Id == model.ProjectId);
+
+                if (existingProject == null)
+                    return "Project not found";
+
+                existingProject.CustomerId = model.Customer_Id;
+                existingProject.LeadId = model.Lead_Id ?? 0;
+                existingProject.StatusId = model.StatusId;
+                existingProject.ProjectName = model.Project_Name;
+                existingProject.ServiceNo = int.TryParse(model.Service_No, out var serviceNo) ? serviceNo : 0;
+                existingProject.Category = model.Category;
+                existingProject.SiteLocation = model.SiteLocation;
+                existingProject.UpdatedDate = DateTime.Now;
+
+                await _context.SaveChangesAsync();
+                return "Project updated successfully";
+            }
+        }
+
+        public async Task<ProjectRequestDto> GetProjectByIdAsync(int projectId)
+        {
+            var project = await _context.Projects
+                .FirstOrDefaultAsync(x => x.Id == projectId);
+
+            if (project == null)
+                return null;
+
+            return new ProjectRequestDto
+            {
+                ProjectId = project.Id,
+                Customer_Id = project.CustomerId,
+                Lead_Id = project.LeadId,
+                StatusId = project.StatusId,
+                Project_Name = project.ProjectName,
+                Service_No = project.ServiceNo.ToString(),
+                Category = project.Category,
+                SiteLocation = project.SiteLocation,
+            };
+        }
+
+        public async Task<List<ProjectRequestDto>> GetAllProjectsDtoAsync()
+        {
+            var projects = await _context.Projects.ToListAsync();
+            var list = new List<ProjectRequestDto>();
+
+            foreach (var p in projects)
+            {
+                list.Add(new ProjectRequestDto
+                {
+                    ProjectId = p.Id,
+                    Customer_Id = p.CustomerId,
+                    Lead_Id = p.LeadId,
+                    StatusId = p.StatusId,
+                    Project_Name = p.ProjectName,
+                    Service_No = p.ServiceNo.ToString(),
+                    Category = p.Category,
+                    SiteLocation = p.SiteLocation,
+                });
+            }
+            return list;
         }
     }
 }

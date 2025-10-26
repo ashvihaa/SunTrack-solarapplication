@@ -9,7 +9,9 @@ namespace SunTrack.API.Services.Projects
     {
         Task<List<Project>> GetProjectslist();
         Task<List<ProjectViewModel>> GetAllProjectsAsync();
-
         Task<List<ProjectViewModel>> GetProjectsAsync(SearchVM search);
+        Task<string> SaveProjectAsync(ProjectRequestDto model);
+        Task<ProjectRequestDto> GetProjectByIdAsync(int projectId);
+        Task<List<ProjectRequestDto>> GetAllProjectsDtoAsync();
     }
 }
