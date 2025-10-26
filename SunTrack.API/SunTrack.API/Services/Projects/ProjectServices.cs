@@ -70,7 +70,7 @@ namespace SunTrackApi.Services
                 {
                     Id = p.Id,
                     ProjectName = p.ProjectName,
-                    Category = p.Category,
+                    Category = p.Category ?? string.Empty, // Fix CS8601 here
                     ServiceNo = p.ServiceNo,
                 })
                 .ToListAsync();
