@@ -1,4 +1,6 @@
-﻿namespace SunTrack.API.ViewModels
+﻿using Newtonsoft.Json;
+
+namespace SunTrack.API.ViewModels
 {
     public class ProjectProductMappingRequestDto
     {
@@ -7,3 +9,9 @@
     }
 
 }
+
+//new List<int>();
+// Works in any C# version.
+
+//new();
+//Requires C# 9.0 or higher (e.g., .NET 5+)

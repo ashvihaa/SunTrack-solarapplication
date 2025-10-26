@@ -48,7 +48,7 @@
               "RelativeDocumentMoniker": "SunTrack.API\\ViewModels\\ProjectProductMappingRequestDto.cs.cs",
               "ToolTip": "D:\\viashramo\\API\u0027s\\Suntrack\\SunTrack.API\\SunTrack.API\\ViewModels\\ProjectProductMappingRequestDto.cs.cs",
               "RelativeToolTip": "SunTrack.API\\ViewModels\\ProjectProductMappingRequestDto.cs.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-26T13:14:20.945Z",
               "EditorCaption": ""
@@ -63,8 +63,7 @@
               "RelativeToolTip": "SunTrack.API\\ViewModels\\ProjectRequestDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-25T07:24:01.691Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-25T07:24:01.691Z"
             },
             {
               "$type": "Document",
@@ -124,8 +123,7 @@
               "RelativeToolTip": "SunTrack.API\\Services\\Projects\\ProjectServices.cs",
               "ViewState": "AgIAAG0AAAAAAAAAAAAqwKsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-23T11:27:21.059Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-23T11:27:21.059Z"
             }
           ]
         }
