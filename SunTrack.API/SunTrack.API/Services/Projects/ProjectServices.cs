@@ -202,5 +202,33 @@ namespace SunTrackApi.Services
                 .Select(x => x.ProductId)
                 .ToListAsync();
         }
+
+        public async Task<string> DeleteProjectAsync(int projectId)
+        {
+            // Validate input
+            if (projectId <= 0)
+                return "Invalid project ID";
+
+            // Find project
+            var project = await _context.Projects
+                .FirstOrDefaultAsync(p => p.Id == projectId);
+
+            if (project == null)
+                return "Project not found";
+
+            // Remove product mappings first (optional but recommended)
+            var existingMappings = _context.ProjectProductMappings
+                .Where(x => x.ProjectId == projectId);
+            _context.ProjectProductMappings.RemoveRange(existingMappings);
+
+            // Remove the project
+            _context.Projects.Remove(project);
+
+            // Save changes
+            await _context.SaveChangesAsync();
+
+            return "Project deleted successfully";
+        }
+
     }
 }
