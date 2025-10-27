@@ -390,7 +390,8 @@ namespace SunTrackApi.Services
             }
             catch (Exception ex)
             {
-                return $"Failed to save project: {ex.InnerException?.Message ?? ex.Message}";
+               // return $"Failed to save project: {ex.InnerException?.Message ?? ex.Message}";
+                throw new Exception($"Failed to save project: {ex.InnerException?.Message ?? ex.Message}");
             }
         }
     }
