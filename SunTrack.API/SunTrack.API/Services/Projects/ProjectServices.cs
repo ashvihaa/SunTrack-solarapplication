@@ -392,7 +392,6 @@ namespace SunTrackApi.Services
             {
                 return $"Failed to save project: {ex.InnerException?.Message ?? ex.Message}";
             }
-;
         }
     }
 
