@@ -203,40 +203,40 @@ namespace SunTrackApi.Services
                 .ToListAsync();
         }
 
+        //public async Task<string> DeleteProjectAsync(int projectId)
+        //{
+        //    // Validate input
+        //    if (projectId <= 0)
+        //        return "Invalid project ID";
+
+        //    // Find project
+        //    var project = await _context.Projects
+        //        .FirstOrDefaultAsync(p => p.Id == projectId);
+
+        //    if (project == null)
+        //        return "Project not found";
+
+        //    // Remove product mappings first (optional but recommended)
+        //    var existingMappings = _context.ProjectProductMappings
+        //        .Where(x => x.ProjectId == projectId);
+        //    _context.ProjectProductMappings.RemoveRange(existingMappings);
+
+        //    // Remove the project
+        //    _context.Projects.Remove(project);
+
+        //    // Save changes
+        //    await _context.SaveChangesAsync();
+
+        //    return "Project deleted successfully";
+        //}
+
         public async Task<string> DeleteProjectAsync(int projectId)
         {
-            // Validate input
+            // Validate
             if (projectId <= 0)
                 return "Invalid project ID";
 
-            // Find project
-            var project = await _context.Projects
-                .FirstOrDefaultAsync(p => p.Id == projectId);
-
-            if (project == null)
-                return "Project not found";
-
-            // Remove product mappings first (optional but recommended)
-            var existingMappings = _context.ProjectProductMappings
-                .Where(x => x.ProjectId == projectId);
-            _context.ProjectProductMappings.RemoveRange(existingMappings);
-
-            // Remove the project
-            _context.Projects.Remove(project);
-
-            // Save changes
-            await _context.SaveChangesAsync();
-
-            return "Project deleted successfully";
-        }
-
-        public async Task<string> DeleteProject(int projectId)
-        {
-            // 1️⃣ Validate
-            if (projectId <= 0)
-                return "Invalid project ID";
-
-            // 2️⃣ Get the project
+            // Get the project
             var project = await _context.Projects.FirstOrDefaultAsync(p => p.Id == projectId);
             if (project == null)
                 return "Project not found";
@@ -260,6 +260,45 @@ namespace SunTrackApi.Services
             await _context.SaveChangesAsync();
 
             return "Project and its product mappings deactivated successfully";
+        }
+
+        public async Task<List<int>> GetProductIdsByProject(int projectId)
+        {
+            return await _context.ProjectProductMappings
+                .Where(x => x.ProjectId == projectId && x.IsActive == true)  // filter active mappings
+                .Select(x => x.ProductId)
+                .ToListAsync();
+        }
+        public async Task<string> RestoreProjectAsync(int projectId)
+        {
+            // Validate
+            if (projectId <= 0)
+                return "Invalid project ID";
+
+            // Find project
+            var project = await _context.Projects.FirstOrDefaultAsync(p => p.Id == projectId);
+            if (project == null)
+                return "Project not found";
+
+            // Restore project
+            project.IsActive = true;
+            project.UpdatedDate = DateTime.Now;
+
+            // Optional: Restore related mappings
+            var mappings = _context.ProjectProductMappings
+                .Where(m => m.ProjectId == projectId)
+                .ToList();
+
+            foreach (var mapping in mappings)
+            {
+                mapping.IsActive = true;
+                mapping.UpdatedDate = DateTime.Now;
+            }
+
+            // Save changes
+            await _context.SaveChangesAsync();
+
+            return "Project and related mappings restored successfully";
         }
 
     }

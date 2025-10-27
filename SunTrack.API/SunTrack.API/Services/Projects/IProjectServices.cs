@@ -16,6 +16,8 @@ namespace SunTrack.API.Services.Projects
         Task<string> AddOrUpdateMappingAsync(ProjectProductMappingRequestDto model);
         Task<List<int>> GetProductIdsByProjectAsync(int projectId);
         Task<string> DeleteProjectAsync(int projectId);
+        Task<string> RestoreProjectAsync(int projectId);
+
 
     }
 

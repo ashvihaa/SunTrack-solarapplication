@@ -109,6 +109,14 @@ namespace SunTrack.API.Controllers
             var result = await _projectServices.DeleteProjectAsync(projectId);
             return Ok(new { message = result });
         }
+
+        [HttpPut("RestoreProject/{projectId}")]
+        public async Task<IActionResult> RestoreProject(int projectId)
+        {
+            var result = await _projectServices.RestoreProjectAsync(projectId);
+            return Ok(new { message = result });
+        }
+
     }
 }
 

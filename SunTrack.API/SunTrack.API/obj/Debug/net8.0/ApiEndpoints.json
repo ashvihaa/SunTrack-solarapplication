@@ -95,6 +95,22 @@
   },
   {
     "ContainingType": "SunTrack.API.Controllers.ProjectSectionController",
+    "Method": "RestoreProject",
+    "RelativePath": "api/ProjectSection/RestoreProject/{projectId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SunTrack.API.Controllers.ProjectSectionController",
     "Method": "SaveMapping",
     "RelativePath": "api/ProjectSection/SaveMapping",
     "HttpMethod": "POST",

@@ -216,6 +216,29 @@
           }
         }
       }
+    },
+    "/api/ProjectSection/RestoreProject/{projectId}": {
+      "put": {
+        "tags": [
+          "ProjectSection"
+        ],
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -234,6 +257,9 @@
               "format": "int32"
             },
             "nullable": true
+          },
+          "isActive": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
