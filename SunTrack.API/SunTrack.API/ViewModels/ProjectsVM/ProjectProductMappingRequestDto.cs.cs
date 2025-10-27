@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace SunTrack.API.ViewModels
+namespace SunTrack.API.ViewModels.ProjectsVM
 {
     public class ProjectProductMappingRequestDto
     {
