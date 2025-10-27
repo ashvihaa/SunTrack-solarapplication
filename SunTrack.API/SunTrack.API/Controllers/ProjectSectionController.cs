@@ -102,6 +102,13 @@ namespace SunTrack.API.Controllers
             var productIds = await _projectServices.GetProductIdsByProjectAsync(projectId);
             return Ok(productIds);
         }
+
+        [HttpDelete("DeleteProject/{projectId}")]
+        public async Task<IActionResult> DeleteProject(int projectId)
+        {
+            var result = await _projectServices.DeleteProjectAsync(projectId);
+            return Ok(new { message = result });
+        }
     }
 }
 
