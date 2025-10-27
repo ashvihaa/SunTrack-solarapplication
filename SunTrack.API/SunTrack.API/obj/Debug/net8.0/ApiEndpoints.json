@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "SunTrack.API.Controllers.ProjectSectionController",
+    "Method": "DeleteProject",
+    "RelativePath": "api/ProjectSection/DeleteProject/{projectId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SunTrack.API.Controllers.ProjectSectionController",
     "Method": "GetAllProjects",
     "RelativePath": "api/ProjectSection/GetAllProjects",
     "HttpMethod": "GET",

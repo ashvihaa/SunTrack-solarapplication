@@ -193,6 +193,29 @@
           }
         }
       }
+    },
+    "/api/ProjectSection/DeleteProject/{projectId}": {
+      "delete": {
+        "tags": [
+          "ProjectSection"
+        ],
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {

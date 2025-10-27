@@ -11,6 +11,10 @@ public partial class ProjectProductMapping
 
     public int ProductId { get; set; }
 
+    public bool IsActive { get; set; }
+
+    public DateTime? UpdatedDate { get; set; }
+
     public virtual ProductDetail Product { get; set; } = null!;
 
     public virtual Project Project { get; set; } = null!;

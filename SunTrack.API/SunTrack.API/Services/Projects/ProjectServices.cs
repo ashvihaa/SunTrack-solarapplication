@@ -230,5 +230,37 @@ namespace SunTrackApi.Services
             return "Project deleted successfully";
         }
 
+        public async Task<string> DeleteProject(int projectId)
+        {
+            // 1️⃣ Validate
+            if (projectId <= 0)
+                return "Invalid project ID";
+
+            // 2️⃣ Get the project
+            var project = await _context.Projects.FirstOrDefaultAsync(p => p.Id == projectId);
+            if (project == null)
+                return "Project not found";
+
+            // Soft delete project
+            project.IsActive = false;
+            project.UpdatedDate = DateTime.Now;
+
+            // Soft delete related product mappings
+            var mappings = _context.ProjectProductMappings
+                .Where(m => m.ProjectId == projectId && m.IsActive == true)
+                .ToList();
+
+            foreach (var mapping in mappings)
+            {
+                mapping.IsActive = false;
+                mapping.UpdatedDate = DateTime.Now;
+            }
+
+            // Save changes
+            await _context.SaveChangesAsync();
+
+            return "Project and its product mappings deactivated successfully";
+        }
+
     }
 }

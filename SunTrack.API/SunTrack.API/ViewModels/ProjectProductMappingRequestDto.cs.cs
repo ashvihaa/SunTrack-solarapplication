@@ -6,6 +6,8 @@ namespace SunTrack.API.ViewModels
     {
         public int ProjectId { get; set; }
         public List<int> ProductIds { get; set; } = new List<int>();
+
+        public bool IsActive { get; set; }
     }
 
 }
