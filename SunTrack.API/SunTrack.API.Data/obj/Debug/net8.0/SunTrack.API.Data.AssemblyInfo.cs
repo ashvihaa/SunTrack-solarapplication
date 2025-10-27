@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SunTrack.API.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+303b309d9fa8ac256eb2cd0bc36f3572caa29c06")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+58d746bd9e3b0ec7142727b828edcf7f2b8e4b58")]
 [assembly: System.Reflection.AssemblyProductAttribute("SunTrack.API.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SunTrack.API.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

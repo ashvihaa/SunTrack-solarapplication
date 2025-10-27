@@ -89,10 +89,10 @@ namespace SunTrackApi.Services
                 var project = new Project
                 {
                     CustomerId = model.Customer_Id,
-                    LeadId = model.Lead_Id ?? 0,
+                    LeadId = model.LeadId ?? 0,
                     StatusId = model.StatusId,
                     ProjectName = model.Project_Name,
-                    ServiceNo = int.TryParse(model.Service_No, out var serviceNo) ? serviceNo : 0,
+                    ServiceNo = model.ServiceNo,
                     Category = model.Category,
                     SiteLocation = model.SiteLocation,
                     CreatedDate = DateTime.Now,
@@ -114,10 +114,10 @@ namespace SunTrackApi.Services
                     return "Project not found";
 
                 existingProject.CustomerId = model.Customer_Id;
-                existingProject.LeadId = model.Lead_Id ?? 0;
+                existingProject.LeadId = model.LeadId ?? 0;
                 existingProject.StatusId = model.StatusId;
                 existingProject.ProjectName = model.Project_Name;
-                existingProject.ServiceNo = int.TryParse(model.Service_No, out var serviceNo) ? serviceNo : 0;
+                existingProject.ServiceNo = model.ServiceNo;
                 existingProject.Category = model.Category;
                 existingProject.SiteLocation = model.SiteLocation;
                 existingProject.UpdatedDate = DateTime.Now;
@@ -139,10 +139,10 @@ namespace SunTrackApi.Services
             {
                 ProjectId = project.Id,
                 Customer_Id = project.CustomerId,
-                Lead_Id = project.LeadId,
+                LeadId = project.LeadId,
                 StatusId = project.StatusId,
                 Project_Name = project.ProjectName,
-                Service_No = project.ServiceNo.ToString(),
+                ServiceNo = project.ServiceNo,
                 Category = project.Category,
                 SiteLocation = project.SiteLocation,
             };
@@ -159,10 +159,10 @@ namespace SunTrackApi.Services
                 {
                     ProjectId = p.Id,
                     Customer_Id = p.CustomerId,
-                    Lead_Id = p.LeadId,
+                    LeadId = p.LeadId,
                     StatusId = p.StatusId,
                     Project_Name = p.ProjectName,
-                    Service_No = p.ServiceNo.ToString(),
+                    ServiceNo = p.ServiceNo,
                     Category = p.Category,
                     SiteLocation = p.SiteLocation,
                 });
@@ -196,12 +196,19 @@ namespace SunTrackApi.Services
             return "Mapping saved successfully";
         }
 
-        public async Task<List<int>> GetProductIdsByProjectAsync(int projectId)
+        public async Task<List<ProjectProductVM>> GetProductIdsByProjectAsync(int projectId)
         {
-            return await _context.ProjectProductMappings
-                .Where(x => x.ProjectId == projectId)
-                .Select(x => x.ProductId)
-                .ToListAsync();
+            var result = await (from mapping in _context.ProjectProductMappings
+                                join product in _context.ProductDetails
+                                on mapping.ProductId equals product.Id
+                                where mapping.ProjectId == projectId
+                                select new ProjectProductVM
+                                {
+                                    ProductId = product.Id,
+                                    ItemName = product.ItemName
+                                }).ToListAsync();
+
+            return result;
         }
 
         //public async Task<string> DeleteProjectAsync(int projectId)
@@ -302,5 +309,91 @@ namespace SunTrackApi.Services
             return "Project and related mappings restored successfully";
         }
 
+        public async Task<string> SaveProjectWithProductsAsync(ProjectRequestDto model)
+        {
+            
+            if (model == null || model.CustomerId <= 0)
+                return "Invalid data";
+
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                Project project;
+
+                // Add or Update Project
+                if (model.ProjectId == 0)
+                {
+                    project = new Project
+                    {
+                        CustomerId = model.CustomerId,
+                        LeadId = (int)model.LeadId,
+                        StatusId = model.StatusId,
+                        ProjectName = model.Project_Name,
+                        ServiceNo = model.ServiceNo,
+                        Category = model.Category,
+                        SiteLocation = model.SiteLocation,
+                        SystemCapacityKW = model.SystemCapacityKW,
+                        SubsidyApplicable = model.SubsidyApplicable,
+                        IsActive = true,
+                        CreatedDate = DateTime.Now,
+                        CreatedBy = model.CreatedBy,
+                    };
+
+                    _context.Projects.Add(project);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    project = await _context.Projects.FirstOrDefaultAsync(x => x.Id == model.ProjectId);
+                    if (project == null) return "Project not found";
+
+                    project.CustomerId = model.CustomerId;
+                    project.LeadId = (int)model.LeadId;
+                    project.StatusId = model.StatusId;
+                    project.ProjectName = model.Project_Name;
+                    project.ServiceNo = model.ServiceNo;
+                    project.Category = model.Category;
+                    project.SiteLocation = model.SiteLocation;
+                    project.SystemCapacityKW = model.SystemCapacityKW;
+
+                    project.SubsidyApplicable = model.SubsidyApplicable;
+                    project.UpdatedDate = DateTime.Now;
+                    project.IsActive = true;
+
+                    await _context.SaveChangesAsync();
+                }
+
+                // Add or Update Product Mappings
+                var existingMappings = _context.ProjectProductMappings
+                    .Where(x => x.ProjectId == project.Id);
+                _context.ProjectProductMappings.RemoveRange(existingMappings);
+                await _context.SaveChangesAsync();
+
+                if (model.ProductIds != null && model.ProductIds.Count > 0)
+                {
+                    foreach (var productId in model.ProductIds)
+                    {
+                        _context.ProjectProductMappings.Add(new ProjectProductMapping
+                        {
+                            ProjectId = project.Id,
+                            ProductId = productId,
+                            IsActive = true,
+                            UpdatedDate = DateTime.Now
+                        });
+                    }
+                    await _context.SaveChangesAsync();
+                }
+
+                await transaction.CommitAsync();
+                return "Project and product mappings saved successfully";
+            }
+            catch (Exception ex)
+            {
+                return $"Failed to save project: {ex.InnerException?.Message ?? ex.Message}";
+            }
+;
+        }
     }
+
 }

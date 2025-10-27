@@ -118,6 +118,13 @@ namespace SunTrack.API.Controllers
             return Ok(new { message = result });
         }
 
+        [HttpPost("SaveProjectWithProducts")]
+        public async Task<IActionResult> SaveProjectWithProducts(ProjectRequestDto model)
+        {
+            var result = await _projectServices.SaveProjectWithProductsAsync(model);
+            return Ok(new { message = result });
+        }
+
     }
 }
 

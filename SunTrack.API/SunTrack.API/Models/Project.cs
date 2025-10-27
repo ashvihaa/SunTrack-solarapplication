@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SunTrack.API.Data.Models;
+namespace SunTrack.API.Models;
 
 public partial class Project
 {
@@ -31,6 +31,10 @@ public partial class Project
 
     public int? UpdatedBy { get; set; }
 
+    public bool SubsidyApplicable { get; set; }
+
+    public decimal? SystemCapacityKw { get; set; }
+
     public virtual User CreatedByNavigation { get; set; } = null!;
 
     public virtual Customer Customer { get; set; } = null!;
@@ -48,7 +52,4 @@ public partial class Project
     public virtual Status Status { get; set; } = null!;
 
     public virtual User? UpdatedByNavigation { get; set; }
-    public decimal SystemCapacityKW { get; set; }
-    public bool SubsidyApplicable { get; set; }
-
 }

@@ -239,6 +239,42 @@
           }
         }
       }
+    },
+    "/api/ProjectSection/SaveProjectWithProducts": {
+      "post": {
+        "tags": [
+          "ProjectSection"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -275,7 +311,7 @@
             "type": "integer",
             "format": "int32"
           },
-          "lead_Id": {
+          "leadId": {
             "type": "integer",
             "format": "int32",
             "nullable": true
@@ -288,9 +324,9 @@
             "type": "string",
             "nullable": true
           },
-          "service_No": {
-            "type": "string",
-            "nullable": true
+          "serviceNo": {
+            "type": "integer",
+            "format": "int32"
           },
           "category": {
             "type": "string",
@@ -302,6 +338,29 @@
           },
           "subsidyApplicable": {
             "type": "boolean"
+          },
+          "customerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "systemCapacityKW": {
+            "type": "number",
+            "format": "double"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "createdBy": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

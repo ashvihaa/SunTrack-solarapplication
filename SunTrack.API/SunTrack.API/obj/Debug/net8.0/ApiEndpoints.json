@@ -119,7 +119,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "SunTrack.API.ViewModels.ProjectProductMappingRequestDto",
+        "Type": "SunTrack.API.ViewModels.ProjectsVM.ProjectProductMappingRequestDto",
         "IsRequired": true
       }
     ],
@@ -135,7 +135,23 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "SunTrack.API.ViewModels.ProjectRequestDto",
+        "Type": "SunTrack.API.ViewModels.ProjectsVM.ProjectRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SunTrack.API.Controllers.ProjectSectionController",
+    "Method": "SaveProjectWithProducts",
+    "RelativePath": "api/ProjectSection/SaveProjectWithProducts",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "SunTrack.API.ViewModels.ProjectsVM.ProjectRequestDto",
         "IsRequired": true
       }
     ],
