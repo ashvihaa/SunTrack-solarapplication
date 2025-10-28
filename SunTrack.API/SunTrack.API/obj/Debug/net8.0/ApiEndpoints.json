@@ -1,5 +1,57 @@
 [
   {
+    "ContainingType": "SunTrack.API.Controllers.InstallationController",
+    "Method": "AddInstallationStatus",
+    "RelativePath": "api/Installation/AddInstallation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "SunTrack.API.ViewModels.InstallationVM.InstallationStatusVM",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SunTrack.API.Controllers.InstallationController",
+    "Method": "GetAllInstallationStatus",
+    "RelativePath": "api/Installation/GetAllInstallationStatus",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SunTrack.API.Controllers.InstallationController",
+    "Method": "List",
+    "RelativePath": "api/Installation/list",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SunTrack.API.Controllers.ProjectSectionController",
     "Method": "DeleteProject",
     "RelativePath": "api/ProjectSection/DeleteProject/{projectId}",

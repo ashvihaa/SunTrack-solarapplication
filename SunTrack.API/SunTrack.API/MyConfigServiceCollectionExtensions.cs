@@ -1,4 +1,5 @@
-﻿using SunTrack.API.Services.Projects;
+﻿using SunTrack.API.Services.Installation;
+using SunTrack.API.Services.Projects;
 using SunTrackApi.Services;
 
 namespace SunTrack.API
@@ -8,6 +9,7 @@ namespace SunTrack.API
         public static IServiceCollection AddMyDependencyGroup(this IServiceCollection services)
         { 
         services.AddScoped<IProjectServices, ProjectServices>();
+        services.AddScoped<IInstallationServices, InstallationServices>();
             return services;
         }
     }

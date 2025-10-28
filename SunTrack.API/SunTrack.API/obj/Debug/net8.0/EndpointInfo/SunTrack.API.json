@@ -5,6 +5,93 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/Installation/AddInstallation": {
+      "post": {
+        "tags": [
+          "Installation"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstallationStatusVM"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstallationStatusVM"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstallationStatusVM"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstallationStatusVM"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Installation/GetAllInstallationStatus": {
+      "get": {
+        "tags": [
+          "Installation"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Installation/list": {
+      "get": {
+        "tags": [
+          "Installation"
+        ],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/ProjectSection/GetProjectslist": {
       "get": {
         "tags": [
@@ -279,6 +366,69 @@
   },
   "components": {
     "schemas": {
+      "InstallationStatusVM": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "projectId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "structureMounting": {
+            "type": "boolean"
+          },
+          "panelFixing": {
+            "type": "boolean"
+          },
+          "inverterMounting": {
+            "type": "boolean"
+          },
+          "acdbAndDCDB": {
+            "type": "boolean"
+          },
+          "earthing": {
+            "type": "boolean"
+          },
+          "acCable": {
+            "type": "boolean"
+          },
+          "dcCable": {
+            "type": "boolean"
+          },
+          "civilWorks": {
+            "type": "boolean"
+          },
+          "lightArrester": {
+            "type": "boolean"
+          },
+          "netMeter": {
+            "type": "boolean"
+          },
+          "searchString": {
+            "type": "string",
+            "nullable": true
+          },
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "ProjectProductMappingRequestDto": {
         "type": "object",
         "properties": {

@@ -1,11 +1,12 @@
 ﻿using SunTrack.API.ViewModels.InstallationVM;
+using System.Threading.Tasks;
 
 namespace SunTrack.API.Services.Installation
 {
     public interface IInstallationServices
     {
-        Task<List<InstallationStatusVM>> GetInstallationStatusAsync(InstallationStatusVM searchVm);
-        Task<bool> AddOrUpdateInstallationStatusAsync(InstallationStatusVM model);
-
+        Task<bool> AddInstallationStatusAsync(InstallationStatusVM model);
+        Task<List<InstallationStatusVM>> GetAllInstallationStatusesAsync();
+        Task<(List<InstallationStatusVM> Items, int TotalCount)> GetInstallationStatusesAsync(string? search, int pageNumber, int pageSize);
     }
 }

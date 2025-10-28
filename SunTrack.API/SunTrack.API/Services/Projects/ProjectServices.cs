@@ -333,7 +333,7 @@ namespace SunTrackApi.Services
                         ServiceNo = model.ServiceNo,
                         Category = model.Category,
                         SiteLocation = model.SiteLocation,
-                        SystemCapacityKW = model.SystemCapacityKW,
+                        SystemCapacityKw = model.SystemCapacityKW,
                         SubsidyApplicable = model.SubsidyApplicable,
                         IsActive = true,
                         CreatedDate = DateTime.Now,
@@ -355,7 +355,7 @@ namespace SunTrackApi.Services
                     project.ServiceNo = model.ServiceNo;
                     project.Category = model.Category;
                     project.SiteLocation = model.SiteLocation;
-                    project.SystemCapacityKW = model.SystemCapacityKW;
+                    project.SystemCapacityKw = model.SystemCapacityKW;
 
                     project.SubsidyApplicable = model.SubsidyApplicable;
                     project.UpdatedDate = DateTime.Now;

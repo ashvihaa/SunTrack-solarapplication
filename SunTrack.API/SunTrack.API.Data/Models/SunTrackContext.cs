@@ -132,37 +132,18 @@ public partial class SunTrackContext : DbContext
 
             entity.ToTable("Installation_Status");
 
-            entity.Property(e => e.Accable)
-                .HasMaxLength(50)
-                .HasColumnName("ACCable");
-            entity.Property(e => e.AcdbAndDcdb)
-                .HasMaxLength(50)
-                .HasColumnName("ACDB_And_DCDB");
-            entity.Property(e => e.CivilWorks)
-                .HasMaxLength(50)
-                .HasColumnName("Civil_Works");
+            entity.Property(e => e.Accable).HasColumnName("ACCable");
+            entity.Property(e => e.AcdbAndDcdb).HasColumnName("ACDB_And_DCDB");
+            entity.Property(e => e.CivilWorks).HasColumnName("Civil_Works");
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.CustomerId).HasColumnName("Customer_Id");
-            entity.Property(e => e.Dccable)
-                .HasMaxLength(50)
-                .HasColumnName("DCCable");
-            entity.Property(e => e.Earthing).HasMaxLength(50);
-            entity.Property(e => e.InverterMounting)
-                .HasMaxLength(50)
-                .HasColumnName("Inverter_Mounting");
-            entity.Property(e => e.LightArrester)
-                .HasMaxLength(50)
-                .HasColumnName("Light_Arrester");
-            entity.Property(e => e.NetMeter)
-                .HasMaxLength(50)
-                .HasColumnName("Net_Meter");
-            entity.Property(e => e.PanelFixing)
-                .HasMaxLength(50)
-                .HasColumnName("Panel_Fixing");
+            entity.Property(e => e.Dccable).HasColumnName("DCCable");
+            entity.Property(e => e.InverterMounting).HasColumnName("Inverter_Mounting");
+            entity.Property(e => e.LightArrester).HasColumnName("Light_Arrester");
+            entity.Property(e => e.NetMeter).HasColumnName("Net_Meter");
+            entity.Property(e => e.PanelFixing).HasColumnName("Panel_Fixing");
             entity.Property(e => e.ProjectId).HasColumnName("Project_Id");
-            entity.Property(e => e.StructureMounting)
-                .HasMaxLength(50)
-                .HasColumnName("Structure_Mounting");
+            entity.Property(e => e.StructureMounting).HasColumnName("Structure_Mounting");
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.CreatedByNavigation).WithMany(p => p.InstallationStatusCreatedByNavigations)
@@ -291,6 +272,9 @@ public partial class SunTrackContext : DbContext
                 .HasMaxLength(100)
                 .HasColumnName("Project_Name");
             entity.Property(e => e.ServiceNo).HasColumnName("Service_No");
+            entity.Property(e => e.SystemCapacityKw)
+                .HasColumnType("decimal(18, 2)")
+                .HasColumnName("SystemCapacityKW");
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.CreatedByNavigation).WithMany(p => p.ProjectCreatedByNavigations)

@@ -11,25 +11,25 @@ public partial class InstallationStatus
 
     public int ProjectId { get; set; }
 
-    public string? StructureMounting { get; set; }
+    public bool? StructureMounting { get; set; }
 
-    public string? PanelFixing { get; set; }
+    public bool? PanelFixing { get; set; }
 
-    public string? InverterMounting { get; set; }
+    public bool? InverterMounting { get; set; }
 
-    public string? AcdbAndDcdb { get; set; }
+    public bool? AcdbAndDcdb { get; set; }
 
-    public string? Earthing { get; set; }
+    public bool? Earthing { get; set; }
 
-    public string? Accable { get; set; }
+    public bool? Accable { get; set; }
 
-    public string? Dccable { get; set; }
+    public bool? Dccable { get; set; }
 
-    public string? CivilWorks { get; set; }
+    public bool? CivilWorks { get; set; }
 
-    public string? LightArrester { get; set; }
+    public bool? LightArrester { get; set; }
 
-    public string? NetMeter { get; set; }
+    public bool? NetMeter { get; set; }
 
     public bool IsActive { get; set; }
 
