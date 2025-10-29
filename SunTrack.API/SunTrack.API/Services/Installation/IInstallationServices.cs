@@ -9,6 +9,8 @@ namespace SunTrack.API.Services.Installation
         Task<List<InstallationStatusVM>> GetAllInstallationStatusesAsync();
         Task<(List<InstallationStatusVM> Items, int TotalCount)> GetInstallationStatusesAsync(string? search, int pageNumber, int pageSize);
         Task<bool> UpdateInstallationStatusAsync(InstallationStatusVM model);
+        Task<bool> DeleteInstallationStatusAsync(int id);
+
 
     }
 }

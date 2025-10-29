@@ -168,8 +168,27 @@ namespace SunTrack.API.Services.Installation
             }
         }
 
-    }
+        public async Task<bool> DeleteInstallationStatusAsync(int id)
+        {
+            try
+            {
+                // Check if record exists
+                var existing = await _context.InstallationStatuses.FirstOrDefaultAsync(x => x.Id == id);
+                if (existing == null)
+                    return false;
 
+                // Delete from DB
+                _context.InstallationStatuses.Remove(existing);
+                await _context.SaveChangesAsync();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+    }
 }
 
         

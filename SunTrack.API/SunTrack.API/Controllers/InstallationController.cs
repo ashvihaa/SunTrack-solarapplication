@@ -108,5 +108,25 @@ namespace SunTrack.API.Controllers
             }
         }
 
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (id <= 0)
+                return BadRequest("Invalid ID.");
+
+            try
+            {
+                var isDeleted = await _installationServices.DeleteInstallationStatusAsync(id);
+
+                if (isDeleted)
+                    return Ok("Installation status deleted successfully.");
+
+                return NotFound("Record not found.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }
