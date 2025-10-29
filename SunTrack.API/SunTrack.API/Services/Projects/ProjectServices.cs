@@ -46,7 +46,7 @@ namespace SunTrackApi.Services
         {
             // Start the query
             var query = _context.Projects
-                .AsNoTracking()
+                //.AsNoTracking()
                 .AsQueryable();
 
             // Apply search filter if text is provided
@@ -71,7 +71,7 @@ namespace SunTrackApi.Services
                 {
                     Id = p.Id,
                     ProjectName = p.ProjectName,
-                    Category = p.Category ?? string.Empty, // Fix CS8601 here
+                    Category = p.Category ?? string.Empty,          
                     ServiceNo = p.ServiceNo,
                 })
                 .ToListAsync();
@@ -211,33 +211,6 @@ namespace SunTrackApi.Services
             return result;
         }
 
-        //public async Task<string> DeleteProjectAsync(int projectId)
-        //{
-        //    // Validate input
-        //    if (projectId <= 0)
-        //        return "Invalid project ID";
-
-        //    // Find project
-        //    var project = await _context.Projects
-        //        .FirstOrDefaultAsync(p => p.Id == projectId);
-
-        //    if (project == null)
-        //        return "Project not found";
-
-        //    // Remove product mappings first (optional but recommended)
-        //    var existingMappings = _context.ProjectProductMappings
-        //        .Where(x => x.ProjectId == projectId);
-        //    _context.ProjectProductMappings.RemoveRange(existingMappings);
-
-        //    // Remove the project
-        //    _context.Projects.Remove(project);
-
-        //    // Save changes
-        //    await _context.SaveChangesAsync();
-
-        //    return "Project deleted successfully";
-        //}
-
         public async Task<string> DeleteProjectAsync(int projectId)
         {
             // Validate
@@ -292,7 +265,7 @@ namespace SunTrackApi.Services
             project.IsActive = true;
             project.UpdatedDate = DateTime.Now;
 
-            // Optional: Restore related mappings
+            // Restore related mappings
             var mappings = _context.ProjectProductMappings
                 .Where(m => m.ProjectId == projectId)
                 .ToList();
