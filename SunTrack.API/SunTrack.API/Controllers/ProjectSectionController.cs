@@ -51,7 +51,7 @@ namespace SunTrack.API.Controllers
             }
         }
 
-        [HttpGet("GetProjects")]
+        [HttpPost("GetProjects")]
         public async Task<IActionResult> GetProjects(SearchVM search)
         {
             try

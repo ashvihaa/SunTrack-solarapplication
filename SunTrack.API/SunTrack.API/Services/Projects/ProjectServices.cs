@@ -46,7 +46,7 @@ namespace SunTrackApi.Services
         {
             // Start the query
             var query = _context.Projects
-                //.AsNoTracking()
+                .AsNoTracking()
                 .AsQueryable();
 
             // Apply search filter if text is provided

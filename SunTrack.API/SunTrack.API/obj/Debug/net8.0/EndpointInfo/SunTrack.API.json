@@ -176,7 +176,7 @@
       }
     },
     "/api/ProjectSection/GetProjects": {
-      "get": {
+      "post": {
         "tags": [
           "ProjectSection"
         ],

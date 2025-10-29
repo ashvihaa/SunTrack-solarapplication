@@ -155,7 +155,7 @@
     "ContainingType": "SunTrack.API.Controllers.ProjectSectionController",
     "Method": "GetProjects",
     "RelativePath": "api/ProjectSection/GetProjects",
-    "HttpMethod": "GET",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [

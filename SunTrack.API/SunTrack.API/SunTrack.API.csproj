@@ -22,4 +22,8 @@
 	<ItemGroup>
 		<ProjectReference Include="..\SunTrack.API.Data\SunTrack.API.Data.csproj" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="ViewModels\FinancialVM\" />
+	</ItemGroup>
 </Project>
