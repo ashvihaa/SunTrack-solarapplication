@@ -11,6 +11,5 @@ namespace SunTrack.API.Services.Installation
         Task<bool> UpdateInstallationStatusAsync(InstallationStatusVM model);
         Task<bool> DeleteInstallationStatusAsync(int id);
 
-
     }
 }

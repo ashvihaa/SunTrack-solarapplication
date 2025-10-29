@@ -172,13 +172,20 @@ namespace SunTrack.API.Services.Installation
         {
             try
             {
-                // Check if record exists
-                var existing = await _context.InstallationStatuses.FirstOrDefaultAsync(x => x.Id == id);
-                if (existing == null)
-                    return false;
+                //Find the record
+                var existing = await _context.InstallationStatuses
+                    .FirstOrDefaultAsync(x => x.Id == id && x.IsActive == true);
 
-                // Delete from DB
-                _context.InstallationStatuses.Remove(existing);
+                if (existing == null)
+                    return false; // Record not found or already inactive
+
+                // Soft delete
+                existing.IsActive = false;
+                existing.UpdatedDate = DateTime.Now;
+                existing.UpdatedBy = 1; //In real apps, get logged-in user ID
+
+                // Save changes
+                _context.InstallationStatuses.Update(existing);
                 await _context.SaveChangesAsync();
 
                 return true;

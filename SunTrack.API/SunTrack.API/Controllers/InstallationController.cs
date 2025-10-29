@@ -119,14 +119,15 @@ namespace SunTrack.API.Controllers
                 var isDeleted = await _installationServices.DeleteInstallationStatusAsync(id);
 
                 if (isDeleted)
-                    return Ok("Installation status deleted successfully.");
+                    return Ok("Installation status deactivated (soft deleted) successfully.");
 
-                return NotFound("Record not found.");
+                return NotFound("Record not found or already deleted.");
             }
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
         }
+
     }
 }
