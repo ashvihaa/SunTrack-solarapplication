@@ -128,6 +128,46 @@ namespace SunTrack.API.Services.Installation
                 return (new List<InstallationStatusVM>(), 0);
             }
         }
+
+        public async Task<bool> UpdateInstallationStatusAsync(InstallationStatusVM model)
+        {
+            try
+            {
+                // Check if the record exists
+                var existing = await _context.InstallationStatuses
+                    .FirstOrDefaultAsync(x => x.Id == model.Id);
+
+                if (existing == null)
+                    return false; // Record not found
+
+                // Update only what’s in the model
+                existing.CustomerId = (int)model.CustomerId;
+                existing.ProjectId = (int)model.ProjectId;
+                existing.StructureMounting = model.StructureMounting;
+                existing.PanelFixing = model.PanelFixing;
+                existing.InverterMounting = model.InverterMounting;
+                existing.AcdbAndDcdb = model.ACDBAndDCDB;
+                existing.Earthing = model.Earthing;
+                existing.Accable = model.ACCable;
+                existing.Dccable = model.DCCable;
+                existing.CivilWorks = model.CivilWorks;
+                existing.LightArrester = model.LightArrester;
+                existing.NetMeter = model.NetMeter;
+                existing.UpdatedDate = DateTime.Now;
+                existing.UpdatedBy = 1; // Replace with logged-in user id
+
+                // Save to DB
+                _context.InstallationStatuses.Update(existing);
+                await _context.SaveChangesAsync();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 
 }

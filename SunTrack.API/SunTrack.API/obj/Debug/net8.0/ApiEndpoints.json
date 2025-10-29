@@ -52,6 +52,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SunTrack.API.Controllers.InstallationController",
+    "Method": "Update",
+    "RelativePath": "api/Installation/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "SunTrack.API.ViewModels.InstallationVM.InstallationStatusVM",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SunTrack.API.Controllers.ProjectSectionController",
     "Method": "DeleteProject",
     "RelativePath": "api/ProjectSection/DeleteProject/{projectId}",

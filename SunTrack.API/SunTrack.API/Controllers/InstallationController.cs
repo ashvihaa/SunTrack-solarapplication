@@ -86,5 +86,27 @@ namespace SunTrack.API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpPut("update")]
+        public async Task<IActionResult> Update(InstallationStatusVM model)
+        {
+            if (model == null || model.Id == null || model.Id == 0)
+                return BadRequest("Invalid data. ID is required for update.");
+
+            try
+            {
+                var isUpdated = await _installationServices.UpdateInstallationStatusAsync(model);
+
+                if (isUpdated)
+                    return Ok("Installation status updated successfully.");
+
+                return NotFound("Record not found or update failed.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
     }
 }
