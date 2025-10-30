@@ -10,5 +10,7 @@ namespace SunTrack.API.Services.Financial
         Task<bool> AddFinancialStatusAsync(FinancialStatusVM model);
         Task<bool> SoftDeleteFinancialStatusAsync(int id, int updatedBy);
         Task<(List<FinancialStatusVM> Items, int TotalCount)> GetFinancialStatusesAsync(FinancialStatusVM searchModel);
+        Task<bool> UpdateFinancialStatusAsync(FinancialStatusVM model);
+
     }
 }

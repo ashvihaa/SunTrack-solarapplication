@@ -228,5 +228,57 @@ namespace SunTrack.API.Services.Financial
                 return (new List<FinancialStatusVM>(), 0);
             }
         }
+
+
+        // Update Financial Record
+        public async Task<bool> UpdateFinancialStatusAsync(FinancialStatusVM model)
+        {
+            try
+            {
+                if (model == null || model.Id == 0)
+                    return false;
+
+                var existing = await _context.FinancialStatuses
+                    .FirstOrDefaultAsync(x => x.Id == model.Id && x.IsActive);
+
+                if (existing == null)
+                    return false;
+
+                //Update fields
+                existing.CustomerId = model.CustomerId;
+                existing.ProjectId = model.ProjectId;
+                existing.ProjectDate = model.ProjectDate ?? existing.ProjectDate;
+                existing.Budget = model.Budget ?? existing.Budget;
+                existing.Document = model.Document ?? existing.Document;
+                existing.Status = model.Status ?? existing.Status;
+                existing.PurchaseInvoice = model.PurchaseInvoice ?? existing.PurchaseInvoice;
+                existing.ReceivedAmount = model.ReceivedAmount ?? existing.ReceivedAmount;
+                existing.ExpenseAmount = model.ExpenseAmount ?? existing.ExpenseAmount;
+                existing.ExpenseReason = model.ExpenseReason ?? existing.ExpenseReason;
+                existing.AdminApproval = model.AdminApproval ?? existing.AdminApproval;
+                existing.PaymentMode = model.PaymentMode ?? existing.PaymentMode;
+                existing.PaymentRefNo = model.PaymentRefNo ?? existing.PaymentRefNo;
+                existing.PaymentDate = model.PaymentDate ?? existing.PaymentDate;
+                existing.Reimbursement = model.Reimbursement ?? existing.Reimbursement;
+                existing.RemarksInternal = model.RemarksInternal ?? existing.RemarksInternal;
+
+                // Update metadata
+                existing.UpdatedDate = DateTime.Now;
+                existing.UpdatedBy = 1; 
+
+                _context.FinancialStatuses.Update(existing);
+                await _context.SaveChangesAsync();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }
+
+    
+

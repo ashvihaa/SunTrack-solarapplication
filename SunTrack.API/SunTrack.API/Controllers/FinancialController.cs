@@ -97,7 +97,34 @@ namespace SunTrack.API.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+
+
+
+        //UPDATE Financial Record
+        [HttpPut("Update")]
+        public async Task<IActionResult> UpdateFinancialStatus([FromBody] FinancialStatusVM model)
+        {
+            if (model == null || model.Id == 0)
+                return BadRequest("Invalid financial record data.");
+
+            try
+            {
+                var success = await _financialServices.UpdateFinancialStatusAsync(model);
+
+                if (!success)
+                    return NotFound($"No active financial record found with ID {model.Id}.");
+
+                return Ok(new { message = "Financial record updated successfully." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
     }
 }
+
+    
+
 
  
