@@ -95,15 +95,38 @@ public partial class SunTrackContext : DbContext
 
             entity.ToTable("Financial_Status");
 
-            entity.Property(e => e.Amount).HasColumnType("decimal(18, 2)");
-            entity.Property(e => e.ApprovedRejected).HasColumnType("datetime");
+            entity.Property(e => e.AdminApproval)
+                .HasMaxLength(50)
+                .HasColumnName("Admin_Approval");
+            entity.Property(e => e.Budget).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.CustomerId).HasColumnName("Customer_Id");
+            entity.Property(e => e.ExpenseAmount)
+                .HasColumnType("decimal(18, 2)")
+                .HasColumnName("Expense_Amount");
+            entity.Property(e => e.ExpenseReason)
+                .HasMaxLength(255)
+                .HasColumnName("Expense_Reason");
+            entity.Property(e => e.PaymentDate)
+                .HasColumnType("datetime")
+                .HasColumnName("Payment_Date");
+            entity.Property(e => e.PaymentMode)
+                .HasMaxLength(50)
+                .HasColumnName("Payment_Mode");
+            entity.Property(e => e.PaymentRefNo)
+                .HasMaxLength(100)
+                .HasColumnName("Payment_Ref_No");
             entity.Property(e => e.ProjectDate)
                 .HasColumnType("datetime")
                 .HasColumnName("Project_Date");
             entity.Property(e => e.ProjectId).HasColumnName("Project_Id");
             entity.Property(e => e.PurchaseInvoice).HasColumnName("Purchase_Invoice");
+            entity.Property(e => e.ReceivedAmount)
+                .HasColumnType("decimal(18, 2)")
+                .HasColumnName("Received_Amount");
+            entity.Property(e => e.RemarksInternal)
+                .HasMaxLength(255)
+                .HasColumnName("Remarks_Internal");
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.CreatedByNavigation).WithMany(p => p.FinancialStatusCreatedByNavigations)

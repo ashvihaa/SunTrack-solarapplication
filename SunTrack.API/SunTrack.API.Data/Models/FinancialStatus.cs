@@ -13,11 +13,9 @@ public partial class FinancialStatus
 
     public DateTime ProjectDate { get; set; }
 
-    public decimal Amount { get; set; }
+    public decimal Budget { get; set; }
 
     public string Document { get; set; } = null!;
-
-    public DateTime ApprovedRejected { get; set; }
 
     public string Status { get; set; } = null!;
 
@@ -32,6 +30,24 @@ public partial class FinancialStatus
     public int CreatedBy { get; set; }
 
     public int? UpdatedBy { get; set; }
+
+    public decimal? ReceivedAmount { get; set; }
+
+    public decimal? ExpenseAmount { get; set; }
+
+    public string? ExpenseReason { get; set; }
+
+    public string? AdminApproval { get; set; }
+
+    public string? PaymentMode { get; set; }
+
+    public string? PaymentRefNo { get; set; }
+
+    public DateTime? PaymentDate { get; set; }
+
+    public bool? Reimbursement { get; set; }
+
+    public string? RemarksInternal { get; set; }
 
     public virtual User CreatedByNavigation { get; set; } = null!;
 
