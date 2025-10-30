@@ -167,5 +167,66 @@ namespace SunTrack.API.Services.Financial
             }
         }
 
+
+        //Get data with search and pagination
+        public async Task<(List<FinancialStatusVM> Items, int TotalCount)> GetFinancialStatusesAsync(FinancialStatusVM searchModel)
+        {
+            try
+            {
+                var query = _context.FinancialStatuses
+                    .Where(x => x.IsActive)
+                    .AsQueryable();
+
+                // SEARCH FILTER
+                if (!string.IsNullOrWhiteSpace(searchModel.SearchText))
+                {
+                    var s = searchModel.SearchText.Trim().ToLower();
+                    query = query.Where(x =>
+                        (x.Status != null && x.Status.ToLower().Contains(s)) ||
+                        (x.AdminApproval != null && x.AdminApproval.ToLower().Contains(s)) ||
+                        (x.PurchaseInvoice != null && x.PurchaseInvoice.ToLower().Contains(s))
+                    );
+                }
+
+                // TOTAL COUNT (for pagination info)
+                var totalCount = await query.CountAsync();
+
+                // PAGINATION LOGIC
+                var items = await query
+                    .OrderByDescending(x => x.CreatedDate)
+                    .Skip((searchModel.PageNumber - 1) * searchModel.PageSize)
+                    .Take(searchModel.PageSize)
+                    .Select(x => new FinancialStatusVM
+                    {
+                        Id = x.Id,
+                        CustomerId = x.CustomerId,
+                        ProjectId = x.ProjectId,
+                        ProjectDate = x.ProjectDate,
+                        Budget = x.Budget,
+                        Document = x.Document,
+                        Status = x.Status,
+                        PurchaseInvoice = x.PurchaseInvoice,
+                        ReceivedAmount = x.ReceivedAmount,
+                        ExpenseAmount = x.ExpenseAmount,
+                        ExpenseReason = x.ExpenseReason,
+                        AdminApproval = x.AdminApproval,
+                        PaymentMode = x.PaymentMode,
+                        PaymentRefNo = x.PaymentRefNo,
+                        PaymentDate = x.PaymentDate,
+                        Reimbursement = x.Reimbursement,
+                        RemarksInternal = x.RemarksInternal,
+                        IsActive = x.IsActive,
+                        CreatedDate = x.CreatedDate,
+                        UpdatedDate = x.UpdatedDate
+                    })
+                    .ToListAsync();
+
+                return (items, totalCount);
+            }
+            catch
+            {
+                return (new List<FinancialStatusVM>(), 0);
+            }
+        }
     }
 }
