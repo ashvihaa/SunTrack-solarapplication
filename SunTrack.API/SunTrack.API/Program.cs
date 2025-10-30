@@ -3,6 +3,7 @@ using SunTrack.API;
 using SunTrack.API.Data;
 using SunTrack.API.Data.Models;
 using SunTrack.API.Services;
+using SunTrack.API.Services.Financial;
 using SunTrack.API.Services.Installation; // Include the namespace for the service interfaces and classes
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,7 +19,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProjectProductMappingService, ProjectProductMappingService>();
 builder.Services.AddScoped<IInstallationServices, InstallationServices>();
-
+builder.Services.AddScoped<IFinancialServices, FinancialServices>();
 
 
 var app = builder.Build();
