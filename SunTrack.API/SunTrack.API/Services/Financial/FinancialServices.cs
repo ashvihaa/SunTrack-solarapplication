@@ -168,34 +168,36 @@ namespace SunTrack.API.Services.Financial
         }
 
 
-        //Get data with search and pagination
-        public async Task<(List<FinancialStatusVM> Items, int TotalCount)> GetFinancialStatusesAsync(FinancialStatusVM searchModel)
+        public async Task<(List<FinancialStatusVM> Items, int TotalCount)> GetFinancialStatusesAsync(string? search, int pageNumber, int pageSize)
         {
             try
             {
-                var query = _context.FinancialStatuses
-                    .Where(x => x.IsActive)
-                    .AsQueryable();
+                // Get only active records
+                var q = _context.FinancialStatuses
+                    .AsNoTracking()
+                    .Where(x => x.IsActive);
 
-                // SEARCH FILTER
-                if (!string.IsNullOrWhiteSpace(searchModel.SearchText))
+                //Apply search filter if text is provided
+                if (!string.IsNullOrWhiteSpace(search))
                 {
-                    var s = searchModel.SearchText.Trim().ToLower();
-                    query = query.Where(x =>
+                    var s = search.Trim().ToLower();
+                    q = q.Where(x =>
                         (x.Status != null && x.Status.ToLower().Contains(s)) ||
                         (x.AdminApproval != null && x.AdminApproval.ToLower().Contains(s)) ||
-                        (x.PurchaseInvoice != null && x.PurchaseInvoice.ToLower().Contains(s))
+                        (x.PurchaseInvoice != null && x.PurchaseInvoice.ToLower().Contains(s)) ||
+                        (x.ProjectId.ToString().Contains(s)) ||
+                        (x.CustomerId.ToString().Contains(s))
                     );
                 }
 
-                // TOTAL COUNT (for pagination info)
-                var totalCount = await query.CountAsync();
+                // Get total count before pagination
+                var total = await q.CountAsync();
 
-                // PAGINATION LOGIC
-                var items = await query
+                // Apply pagination and select required fields
+                var items = await q
                     .OrderByDescending(x => x.CreatedDate)
-                    .Skip((searchModel.PageNumber - 1) * searchModel.PageSize)
-                    .Take(searchModel.PageSize)
+                    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize)
                     .Select(x => new FinancialStatusVM
                     {
                         Id = x.Id,
@@ -221,13 +223,14 @@ namespace SunTrack.API.Services.Financial
                     })
                     .ToListAsync();
 
-                return (items, totalCount);
+                return (items, total);
             }
             catch
             {
                 return (new List<FinancialStatusVM>(), 0);
             }
         }
+
 
 
         // Update Financial Record

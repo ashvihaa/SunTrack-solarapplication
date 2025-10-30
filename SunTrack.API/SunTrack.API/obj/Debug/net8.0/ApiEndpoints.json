@@ -26,6 +26,69 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SunTrack.API.Controllers.FinancialController",
+    "Method": "GetFinancialStatuses",
+    "RelativePath": "api/Financial/GetFinancialStatuses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SunTrack.API.Controllers.FinancialController",
+    "Method": "SoftDelete",
+    "RelativePath": "api/Financial/SoftDelete/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedBy",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SunTrack.API.Controllers.FinancialController",
+    "Method": "UpdateFinancialStatus",
+    "RelativePath": "api/Financial/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "SunTrack.API.ViewModels.FinancialVM.FinancialStatusVM",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SunTrack.API.Controllers.InstallationController",
     "Method": "AddInstallationStatus",
     "RelativePath": "api/Installation/AddInstallation",

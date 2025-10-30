@@ -72,14 +72,12 @@ namespace SunTrack.API.Controllers
             }
         }
 
-
-        //Get Financial Statuses with Search + Pagination
-        [HttpPost("GetFinancialStatuses")]
-        public async Task<IActionResult> GetFinancialStatuses([FromBody] FinancialStatusVM searchModel)
+        [HttpGet("GetFinancialStatuses")]
+        public async Task<IActionResult> GetFinancialStatuses(string? search, int pageNumber = 1, int pageSize = 10)
         {
             try
             {
-                var (items, totalCount) = await _financialServices.GetFinancialStatusesAsync(searchModel);
+                var (items, totalCount) = await _financialServices.GetFinancialStatusesAsync(search, pageNumber, pageSize);
 
                 if (totalCount == 0)
                     return NotFound("No financial records found.");
@@ -87,8 +85,8 @@ namespace SunTrack.API.Controllers
                 return Ok(new
                 {
                     totalCount,
-                    searchModel.PageNumber,
-                    searchModel.PageSize,
+                    pageNumber,
+                    pageSize,
                     items
                 });
             }
@@ -97,6 +95,9 @@ namespace SunTrack.API.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+
+
+
 
 
 
