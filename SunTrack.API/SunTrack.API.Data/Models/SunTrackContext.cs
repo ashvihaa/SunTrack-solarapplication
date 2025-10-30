@@ -120,7 +120,9 @@ public partial class SunTrackContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("Project_Date");
             entity.Property(e => e.ProjectId).HasColumnName("Project_Id");
-            entity.Property(e => e.PurchaseInvoice).HasColumnName("Purchase_Invoice");
+            entity.Property(e => e.PurchaseInvoice)
+                .HasMaxLength(50)
+                .HasColumnName("Purchase_Invoice");
             entity.Property(e => e.ReceivedAmount)
                 .HasColumnType("decimal(18, 2)")
                 .HasColumnName("Received_Amount");

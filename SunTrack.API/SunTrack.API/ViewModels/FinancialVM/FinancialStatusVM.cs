@@ -22,5 +22,10 @@
         public bool IsActive { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
+        public string? SearchText { get; set; } = string.Empty;
+        public int PageNumber { get; set; } = 1;
+        public int PageSize { get; set; } = 10;
     }
 }
+
+

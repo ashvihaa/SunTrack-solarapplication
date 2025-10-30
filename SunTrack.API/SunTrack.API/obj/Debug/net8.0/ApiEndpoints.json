@@ -1,5 +1,31 @@
 [
   {
+    "ContainingType": "SunTrack.API.Controllers.FinancialController",
+    "Method": "GetAll",
+    "RelativePath": "api/Financial/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SunTrack.API.Controllers.FinancialController",
+    "Method": "GetById",
+    "RelativePath": "api/Financial/GetById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SunTrack.API.Controllers.InstallationController",
     "Method": "AddInstallationStatus",
     "RelativePath": "api/Installation/AddInstallation",

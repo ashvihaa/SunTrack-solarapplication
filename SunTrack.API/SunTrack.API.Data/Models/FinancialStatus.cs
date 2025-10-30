@@ -19,7 +19,7 @@ public partial class FinancialStatus
 
     public string Status { get; set; } = null!;
 
-    public int PurchaseInvoice { get; set; }
+    public string? PurchaseInvoice { get; set; }
 
     public bool IsActive { get; set; }
 
